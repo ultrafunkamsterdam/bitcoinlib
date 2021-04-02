@@ -28,23 +28,10 @@ from bitcoinlib.main import *
 _logger = logging.getLogger(__name__)
 
 
-SCRYPT_ERROR = None
-USING_MODULE_SCRYPT = os.getenv("USING_MODULE_SCRYPT") not in ["false", "False", "0", "FALSE"]
-try:
-    if USING_MODULE_SCRYPT is not False:
-        import scrypt
-        USING_MODULE_SCRYPT = True
-except ImportError as SCRYPT_ERROR:
-    pass
-if 'scrypt' not in sys.modules:
-    import pyscrypt as scrypt
-    USING_MODULE_SCRYPT = False
+_ERROR = None
 
-if not USING_MODULE_SCRYPT:
-    if 'scrypt_error' not in locals():
-        SCRYPT_ERROR = 'unknown'
-    _logger.warning("Error when trying to import scrypt module %s" % SCRYPT_ERROR)
-
+import pyscrypt as scrypt
+USING_MODULE_SCRYPT = False
 USE_FASTECDSA = os.getenv("USE_FASTECDSA") not in ["false", "False", "0", "FALSE"]
 try:
     if USE_FASTECDSA is not False:

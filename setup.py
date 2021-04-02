@@ -37,13 +37,13 @@ except:
 kwargs = {}
 
 install_requires = [
-      'requests==2.25.1',
-      'fastecdsa==2.1.5;platform_system!="Windows"',
-      'ecdsa==0.16;platform_system=="Windows"',
-      'pyaes==1.6.1',
-      'scrypt==0.8.17',
-      'SQLAlchemy==1.3.22',
-      'numpy==1.19.5',
+      'requests',
+      'fastecdsa;platform_system!="Windows"',
+      'ecdsa;platform_system=="Windows"',
+      'pyaes',
+      'pyscrypt',
+      'SQLAlchemy',
+      'numpy',
 ]
 
 kwargs['install_requires'] = install_requires
